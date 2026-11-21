@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Operations</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+
+        <header>
+            <h1>Homework 5</h1>
+            <p>Execute predefined operations against the database. See instructions for query definitions.</p>
+        </header>
+
+        <section>
+            <h2>Available Operations</h2>
+
+            <div class="operations">
+
+                <div class="operation">
+                    <span>Insert New Shipment A</span>
+                    <button data-operation="insertShipment1">Execute</button>
+                </div>
+
+                <div class="operation">
+                    <span>Insert New Shipment B</span>
+                    <button data-operation="insertShipment2">Execute</button>
+                </div>
+
+                <div class="operation">
+                    <span>Increase Supplier Status</span>
+                    <button data-operation="increaseStatus">Execute</button>
+                </div>
+
+                <div class="operation">
+                    <span>Get All Suppliers</span>
+                    <button data-operation="getSuppliers">Execute</button>
+                </div>
+
+                <div class="operation">
+                    <span>Get Suppliers by Part</span>
+
+                    <div class="operation-controls">
+                        <input
+                            type="text"
+                            id="partNumber"
+                            placeholder="Part #"
+                            maxlength="2"
+                            minlength="2"
+                            pattern="[A-Za-z0-9]{2}"
+                            aria-label="Two-character part number"
+                        >
+                        <button data-operation="getSuppliersByPart">
+                            Execute
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Query Results</h2>
+
+            <div class="results" id="results">
+                <p class="placeholder">
+                    Results will appear here after an operation is executed.
+                </p>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
