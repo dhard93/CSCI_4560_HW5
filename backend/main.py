@@ -12,7 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Insert row into SHIPMENT using preset queries
+# Insert row into SHIPMENT using 1 of the 2 preset insert queries
 @app.post("/shipment/{num}")
 def add_shipment(num: int):
     connection = get_db_connection()
