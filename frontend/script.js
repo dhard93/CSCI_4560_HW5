@@ -1,5 +1,5 @@
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://csci-4560-hw5.onrender.com";
 
 const operations = {
     insertShipment1: {
@@ -39,6 +39,21 @@ async function executeOperation(operationName, button) {
     results.replaceChildren();
 
     const operation = operations[operationName];
+
+    // Validate Query 5's part number before making the API request
+    if (operationName === "getSuppliersByPart") {
+        const pno = document.getElementById("partNumber").value.trim().toLowerCase();
+
+        const validPartNumbers = ["p1", "p2", "p3", "p4", "p5"];
+
+        if (!validPartNumbers.includes(pno)) {
+            showMessage(
+                "Please enter a valid part number: p1, p2, p3, p4, or p5",
+                "message"
+            );
+            return;
+        }
+    }
 
     const endpoint = operation.getEndpoint
         ? operation.getEndpoint()
