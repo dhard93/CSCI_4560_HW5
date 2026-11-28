@@ -25,23 +25,21 @@ def add_shipment(num: int):
             case 2:
                 values = ("s4", "p2", 100, 0.005)
             case _:
-                raise HTTPException(status_code=400)
+                raise HTTPException(status_code=400, detail="Invalid shipment number")
 
         cursor.execute("""
             INSERT INTO SHIPMENT (Sno, Pno, Qty, Price)
             VALUES (%s, %s, %s, %s)
-            RETURNING Sno, Pno, Qty, Price
+            ON CONFLICT (Sno, Pno) DO NOTHING
         """, values)
 
-        inserted = cursor.fetchone()
+        inserted = cursor.rowcount
         connection.commit()
 
-        return {
-            "Sno":inserted[0],
-            "Pno":inserted[1],
-            "Qty":inserted[2],
-            "Price":inserted[3]
-        }
+        if inserted:
+            return {"message": "Shipment successfully inserted."}
+        else:
+            return {"message": "Shipment already exists. No changes made."}
 
     except Exception:
         connection.rollback()
