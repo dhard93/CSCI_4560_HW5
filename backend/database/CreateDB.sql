@@ -1,0 +1,37 @@
+-- Daniel Hardeman
+-- CSCI-4560-001
+-- 10/01/2026
+-- Homework 5
+
+
+CREATE DATABASE IF NOT EXISTS HW4;
+CREATE TABLE SUPPLIER
+(
+	Sno		VARCHAR(2),
+    Sname	VARCHAR(20) 	NOT NULL,
+    Status	INT 			CHECK (Status > 0),
+    City	VARCHAR(20),
+	PRIMARY KEY(Sno)
+);
+
+CREATE TABLE PART
+(
+	Pno		VARCHAR(2),
+    Pname	VARCHAR(20) 	NOT NULL,
+    Color	VARCHAR(10),
+    Weight	INT 			CHECK (Weight BETWEEN 1 AND 100),
+    City	VARCHAR(20) 	NOT NULL,
+    PRIMARY KEY(Pno),
+    UNIQUE (Pname, Color)
+);
+
+CREATE TABLE SHIPMENT
+(
+	Sno		VARCHAR(2),
+    Pno		VARCHAR(2),
+    Qty		INT	DEFAULT 100,
+    Price	DECIMAL(3, 3) 		CHECK (Price > 0),
+    PRIMARY KEY(Sno, Pno),
+    FOREIGN KEY(Sno) 			REFERENCES SUPPLIER(Sno),
+    FOREIGN KEY(Pno) 			REFERENCES PART(Pno)
+);

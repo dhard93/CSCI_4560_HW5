@@ -26,6 +26,19 @@ go to the following url in any web browser:
 https://csci-4560-hw5-1.onrender.com/
 
 ====================================================================================
+Queries
+====================================================================================
+1. Insert a new tuple ('s2', ‘p3’, 200, 0.006) into SHIPMENT table
+2. Insert a new tuple ('s4', ‘p2’, 100, 0.005)
+3. Increase the status of each supplier by 10%
+4. Display information of all suppliers
+5. Prompt the user to input part no, and display information of all suppliers who shipped
+   that part
+
+*NOTE* - The SHIPMENT table has a primary key consisting of (Sno, Pno), so shipments with
+         the duplicate Sno, Pno values are not allowed. Therfore, the 2nd insert query
+         cannot be inserted into the table according to this schema constraint.
+====================================================================================
 NOTE ON RENDER
 ====================================================================================
 
@@ -58,3 +71,4 @@ enter.
 DEMO VIDEO URL
 ====================================================================================
 
+https://www.youtube.com/watch?v=3anOnYgxv8A

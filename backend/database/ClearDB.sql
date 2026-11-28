@@ -1,0 +1,8 @@
+-- Daniel Hardeman
+-- CSCI-4560-001
+-- 10/01/2026
+-- Homework 5
+
+DROP TABLE SHIPMENT;
+DROP TABLE SUPPLIER;
+DROP TABLE PART;
