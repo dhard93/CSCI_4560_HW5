@@ -91,17 +91,41 @@ async function executeOperation(operationName, button) {
     }
 }
 
+
 function displayResults(data) {
+    // Handle API messages
     if (data && data.message) {
         showMessage(data.message, "success");
         return;
     }
 
+    // Handle a single inserted shipment row
+    if (
+        data &&
+        !Array.isArray(data) &&
+        data.Sno !== undefined &&
+        data.Pno !== undefined
+    ) {
+        const message = document.createElement("p");
+        message.className = "success";
+        message.textContent =
+            `Successfully inserted shipment: ` +
+            `Sno: ${data.Sno}, ` +
+            `Pno: ${data.Pno}, ` +
+            `Qty: ${data.Qty}, ` +
+            `Price: ${data.Price}`;
+
+        results.appendChild(message);
+        return;
+    }
+
+    // Handle empty results
     if (!Array.isArray(data) || data.length === 0) {
         showMessage("No results found.", "message");
         return;
     }
 
+    // Handle arrays of rows (display as a table)
     const columns = Object.keys(data[0]);
     const table = document.createElement("table");
     const thead = document.createElement("thead");
